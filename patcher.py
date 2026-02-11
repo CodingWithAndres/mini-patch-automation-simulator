@@ -20,7 +20,7 @@ def in_maintenance_window(window_start: str, window_end: str, now: datetime) -> 
     start = now.replace(hour=start_h, minute=start_m, second=0, microsecond=0)
     end = now.replace(hour=end_h, minute=end_m, second=0, microsecond=0)
 
-    # If the window crosses midnight (e.g., 23:00 -> 02:00)
+    # If the window crosses midnight
     if end <= start:
         return now >= start or now <= end
     return start <= now <= end
