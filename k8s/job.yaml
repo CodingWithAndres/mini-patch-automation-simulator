@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mini-patch-sim
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: patcher
+          image: mini-patch-sim:latest
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: inventory
+              mountPath: /app/servers.csv
+              subPath: servers.csv
+            - name: runtime
+              mountPath: /app/runtime
+          env:
+            - name: DB_PATH
+              value: /app/runtime/database.db
+            - name: LOG_PATH
+              value: /app/runtime/patch.log
+      volumes:
+        - name: inventory
+          configMap:
+            name: patch-inventory
+        - name: runtime
+          emptyDir: {}

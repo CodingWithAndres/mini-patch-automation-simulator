@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: patch-inventory
+data:
+  servers.csv: |
+    server_name,environment,window_start,window_end
+    app-server-01,production,01:00,03:00
+    app-server-02,test,02:00,04:00
+    db-server-01,production,00:00,02:00
+    api-server-01,development,03:00,05:00
