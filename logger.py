@@ -1,7 +1,10 @@
 import logging
+import os
+
+LOG_PATH = os.getenv("LOG_PATH", "patch.log")
 
 logging.basicConfig(
-    filename="patch.log",
+    filename=LOG_PATH,
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )

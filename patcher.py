@@ -1,3 +1,6 @@
+import os
+DB_PATH = os.getenv("DB_PATH", "database.db")
+
 import csv
 import random
 import sqlite3
@@ -41,7 +44,7 @@ def run_patch(server_name: str, environment: str) -> str:
 
 
 def main():
-    conn = sqlite3.connect("database.db")
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
     cursor.execute("""

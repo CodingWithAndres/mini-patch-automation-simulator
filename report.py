@@ -1,7 +1,11 @@
 import sqlite3
+import os
+import sqlite3
+
+DB_PATH = os.getenv("DB_PATH", "database.db")
 
 def generate_report():
-    conn = sqlite3.connect("database.db")
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
     print("Patch Summary Report")
