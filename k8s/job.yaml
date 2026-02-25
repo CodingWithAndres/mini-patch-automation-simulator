@@ -8,8 +8,8 @@ spec:
       restartPolicy: Never
       containers:
         - name: patcher
-          image: mini-patch-sim:latest
-          imagePullPolicy: IfNotPresent
+          image: image-registry.openshift-image-registry.svc:5000/codingwithandres-dev/mini-patch-sim:latest
+          imagePullPolicy: Always
           volumeMounts:
             - name: inventory
               mountPath: /app/servers.csv
